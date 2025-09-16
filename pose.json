@@ -1,0 +1,123 @@
+{
+    "kitten_feeding": [
+      { "prompt": "Drinking fresh water from a stainless steel bowl", "category": "feeding" },
+      { "prompt": "Eating healthy dry food from a clean dish", "category": "feeding" },
+      { "prompt": "Eating soft canned food from a small bowl", "category": "feeding" },
+      { "prompt": "Licking milk from a saucer", "category": "feeding" },
+      { "prompt": "Chewing on a healthy dental treat", "category": "feeding" },
+      { "prompt": "Drinking water from a modern pet fountain", "category": "feeding" },
+      { "prompt": "Nibbling a vitamin snack for pets", "category": "feeding" },
+      { "prompt": "Eating food from an automatic feeder", "category": "feeding" },
+      { "prompt": "Sitting beside a bottle of supplements", "category": "feeding" },
+      { "prompt": "Sniffing healthy treats from a jar", "category": "feeding" }
+    ],
+    "kitten_grooming": [
+      { "prompt": "Licking paw for self-cleaning", "category": "grooming" },
+      { "prompt": "Grooming fur with a small tongue", "category": "grooming" },
+      { "prompt": "Sitting while being brushed with a pet comb", "category": "grooming" },
+      { "prompt": "Rolling on a clean towel after a bath", "category": "grooming" },
+      { "prompt": "Relaxing inside a small pet bathtub", "category": "grooming" },
+      { "prompt": "Shaking water off after a wash", "category": "grooming" },
+      { "prompt": "Resting with a ribbon bow on neck after grooming", "category": "grooming" },
+      { "prompt": "Sitting near a bottle of pet shampoo", "category": "grooming" },
+      { "prompt": "Being gently wiped with a towel", "category": "grooming" },
+      { "prompt": "Wearing a tiny bathrobe", "category": "grooming" }
+    ],
+    "kitten_medical_care": [
+      { "prompt": "Sitting beside a syringe illustration for vaccination", "category": "medical care" },
+      { "prompt": "Lying calmly near a bottle of vitamins", "category": "medical care" },
+      { "prompt": "Sitting next to a first aid kit with paw print", "category": "medical care" },
+      { "prompt": "Resting while a thermometer lies beside", "category": "medical care" },
+      { "prompt": "Looking curious at a stethoscope on the floor", "category": "medical care" },
+      { "prompt": "Lying down with a small bandage on paw", "category": "medical care" },
+      { "prompt": "Sitting near medicine bottles with labels", "category": "medical care" },
+      { "prompt": "Standing inside a vet scale machine", "category": "medical care" },
+      { "prompt": "Sleeping on a soft blanket with an ice pack nearby", "category": "medical care" },
+      { "prompt": "Wearing a cone collar after minor surgery", "category": "medical care" }
+    ],
+    "kitten_resting": [
+      { "prompt": "Sleeping on a soft blanket", "category": "resting" },
+      { "prompt": "Curled up inside a small pet bed", "category": "resting" },
+      { "prompt": "Stretching while waking up", "category": "resting" },
+      { "prompt": "Sleeping under warm sunlight", "category": "resting" },
+      { "prompt": "Napping inside a cardboard box", "category": "resting" },
+      { "prompt": "Resting inside a hammock for cats", "category": "resting" },
+      { "prompt": "Lying on back with paws up", "category": "resting" },
+      { "prompt": "Sleeping with a small toy beside", "category": "resting" },
+      { "prompt": "Yawning while sitting on a cushion", "category": "resting" },
+      { "prompt": "Relaxing on a windowsill", "category": "resting" }
+    ],
+    "kitten_playing": [
+      { "prompt": "Playing with a ball of yarn", "category": "playing" },
+      { "prompt": "Jumping to catch a feather toy", "category": "playing" },
+      { "prompt": "Chasing a red laser dot", "category": "playing" },
+      { "prompt": "Playing with a toy mouse", "category": "playing" },
+      { "prompt": "Rolling with a plush toy", "category": "playing" },
+      { "prompt": "Climbing a scratching post", "category": "playing" },
+      { "prompt": "Exploring a cardboard tunnel", "category": "playing" },
+      { "prompt": "Balancing on a cat tree", "category": "playing" },
+      { "prompt": "Playing with a dangling bell toy", "category": "playing" },
+      { "prompt": "Jumping between cushions", "category": "playing" }
+    ],
+    "kitten_accessories": [
+      { "prompt": "Wearing a colorful ID collar", "category": "accessories" },
+      { "prompt": "Sitting with a bow tie", "category": "accessories" },
+      { "prompt": "Wearing a small bell collar", "category": "accessories" },
+      { "prompt": "Playing with a ribbon on neck", "category": "accessories" },
+      { "prompt": "Wearing a holiday hat", "category": "accessories" },
+      { "prompt": "Sitting inside a carrier bag", "category": "accessories" },
+      { "prompt": "Standing with a GPS tracker collar", "category": "accessories" },
+      { "prompt": "Lying near a pet blanket", "category": "accessories" },
+      { "prompt": "Wearing a flower crown", "category": "accessories" },
+      { "prompt": "Sitting with a bow ribbon", "category": "accessories" }
+    ],
+    "kitten_superhero": [
+      { "prompt": "Standing proudly on a rooftop", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Flying through the sky with glowing aura", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Landing in a heroic pose with dust effect", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Holding a shining shield shaped like a paw", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Pointing forward with space for slogan text", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Standing in front of city skyline at sunset", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Flying down to save a small animal", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Standing with hands on hips in comic style", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Breaking through a wall with strong pose", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" },
+      { "prompt": "Holding banner with motivational text", "category": "superhero", "capeColor": "yellow", "costumeColor": "blue" }
+    ],
+    "puppy_doctor": [
+      { "prompt": "Wearing a white coat with stethoscope", "category": "doctor" },
+      { "prompt": "Holding a clipboard with paw notes", "category": "doctor" },
+      { "prompt": "Checking a heartbeat with stethoscope", "category": "doctor" },
+      { "prompt": "Sitting at a desk with medical notes", "category": "doctor" },
+      { "prompt": "Standing beside medical cross sign", "category": "doctor" },
+      { "prompt": "Holding a small syringe carefully", "category": "doctor" },
+      { "prompt": "Writing prescription on paper", "category": "doctor" },
+      { "prompt": "Pointing at an anatomy chart", "category": "doctor" },
+      { "prompt": "Carrying a small first aid kit", "category": "doctor" },
+      { "prompt": "Smiling with a white vet coat", "category": "doctor" }
+    ],
+    "puppy_scientist": [
+      { "prompt": "Wearing a lab coat examining a test tube", "category": "scientist" },
+      { "prompt": "Looking through a microscope", "category": "scientist" },
+      { "prompt": "Holding a DNA model", "category": "scientist" },
+      { "prompt": "Mixing colorful liquid in beaker", "category": "scientist" },
+      { "prompt": "Standing in front of chalkboard with formulas", "category": "scientist" },
+      { "prompt": "Writing notes in a lab book", "category": "scientist" },
+      { "prompt": "Presenting a discovery on a whiteboard", "category": "scientist" },
+      { "prompt": "Carrying test tubes in holder", "category": "scientist" },
+      { "prompt": "Checking results on a laptop", "category": "scientist" },
+      { "prompt": "Holding a glowing chemical flask", "category": "scientist" }
+    ],
+    "add_other": [
+      { "prompt": "Sitting calmly while being examined by a vet", "category": "medical care" },
+      { "prompt": "Lying on a vet table being checked", "category": "medical care" },
+      { "prompt": "Being gently held by a child", "category": "interaction" },
+      { "prompt": "Examined together with a puppy in clinic", "category": "interaction" },
+      { "prompt": "Resting beside a rabbit in a cage", "category": "interaction" },
+      { "prompt": "Drinking water while another kitten watches", "category": "interaction" },
+      { "prompt": "Sleeping together with a puppy on blanket", "category": "interaction" },
+      { "prompt": "Standing near pet food with other animals", "category": "interaction" },
+      { "prompt": "Looking at a bird through window", "category": "interaction" },
+      { "prompt": "Getting checked by a puppy doctor", "category": "interaction" }
+    ]
+  }
+  

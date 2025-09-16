@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO-One Prompt Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Mengatur font dan background body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1f2937; /* Latar belakang abu-abu gelap */
+        }
+        
+        /* Memastikan body dan html mengisi seluruh viewport */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Mencegah scrolling berlebihan di body */
+        }
+
+        /* Mengatur flexbox untuk tata letak utama */
+        .full-screen-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto; /* Memungkinkan scrolling di dalam container */
+        }
+
+        /* Menyesuaikan ukuran container utama dan tampilan */
+        .main-card {
+            max-width: 1200px;
+            width: 100%;
+            max-height: 100%;
+            overflow-y: auto;
+        }
+
+        /* Kotak pesan untuk notifikasi */
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none;
+        }
+        .message-box.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        /* Tambahkan gaya untuk loading state */
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+    <div class="full-screen-container">
+        <div class="main-card bg-gray-800 rounded-xl shadow-lg p-6 md:p-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="control-panel">
+                <h1 class="text-3xl font-bold text-center text-white mb-6">CO-ONE - Prompt Builder</h1>
+                <p class="text-center text-gray-400 mb-8">Prototype - Version 2.0 with AI Image Generated</p>
+
+                <div class="mb-4">
+                    <label for="character-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Characters</label>
+                    <select id="character-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors">
+                        <option value="Kitten" selected>Captain One</option>
+                        <option value="Puppy">Doctor One</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="expression-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Expressions</label>
+                    <select id="expression-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="pose-input" class="block text-sm font-medium text-gray-300 mb-2">Pose (ex: sitting upright)</label>
+                    <input type="text" id="pose-input" placeholder="Input Pose Prompt" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors">
+                </div>
+
+                <div class="mb-4">
+                    <label for="costume-style-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Customes</label>
+                    <select id="costume-style-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></select>
+                </div>
+
+                <div id="manual-costume-section" class="mb-4 hidden">
+                    <label for="manual-costume-input" class="block text-sm font-medium text-gray-300 mb-2">Other Custome</label>
+                    <textarea id="manual-costume-input" rows="2" placeholder="cth: mengenakan jubah penyihir biru dengan bintang emas" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></textarea>
+                </div>
+
+                <div id="costume-color-section" class="mb-4">
+                    <label for="costume-color-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Colors</label>
+                    <select id="costume-color-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="angle-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Camera Angle</label>
+                    <select id="angle-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="rendering-style-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Rendering Style</label>
+                    <select id="rendering-style-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="lighting-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Lighting</label>
+                    <select id="lighting-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></select>
+                </div>
+
+                <div class="mb-4">
+                    <label for="background-input" class="block text-sm font-medium text-gray-300 mb-2">Background (ex: A softly blurred, cheerful-toned interior scene)</label>
+                    <input type="text" id="background-input" placeholder="Input Background" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="background-element-input" class="block text-sm font-medium text-gray-300 mb-2">Background Element (ex: Hints of furniture, sunlit windows allowing natural light, and illuminated wall sconces)</label>
+                    <input type="text" id="background-element-input" placeholder="Input Background Element" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="mood-vibes-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Mood & Vibes</label>
+                    <select id="mood-vibes-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></select>
+                </div>
+                
+                <div class="mb-6">
+                    <label for="dimension-dropdown" class="block text-sm font-medium text-gray-300 mb-2">Dimension</label>
+                    <select id="dimension-dropdown" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors"></select>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <input type="checkbox" id="two-characters-checkbox" class="h-4 w-4 text-cyan-600 border-gray-600 rounded focus:ring-cyan-500 bg-gray-700">
+                        <label for="two-characters-checkbox" class="ml-2 block text-sm font-medium text-gray-300">Add Other Prompt</label>
+                    </div>
+                    <div id="second-character-section" class="hidden">
+                        <label for="second-character-input" class="block text-sm font-medium text-gray-300 mb-2">Write Prompt Here</label>
+                        <textarea id="second-character-input" rows="4" class="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-cyan-500 focus:border-cyan-500 transition-colors" placeholder="Ketikkan deskripsi karakter kedua dan interaksi di sini..."></textarea>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-gray-700">
+                    <h2 class="text-xl font-bold text-gray-200 mb-4">Generated with AI</h2>
+                    <button id="generate-ai-button" class="w-full px-6 py-3 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all shadow-md">
+                        Generated Images
+                    </button>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 mt-6">
+                    <button id="copy-button" class="w-full px-6 py-3 bg-cyan-600 text-white font-medium rounded-lg hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all shadow-md">
+                        Copy Prompt
+                    </button>
+                </div>
+            </div>
+
+            <div class="prompt-display bg-gray-700 rounded-xl flex items-center justify-center p-4">
+                <div class="p-6 bg-gray-900 border border-gray-700 rounded-lg w-full h-full flex flex-col">
+                    <h3 class="text-lg font-semibold text-gray-200 mb-4">Prompt Preview</h3>
+                    <div class="bg-gray-800 p-4 rounded-lg flex-1 overflow-auto mb-8">
+                        <p id="prompt-text" class="text-sm text-gray-300 leading-relaxed"></p>
+                    </div>
+                    
+                    <h3 class="text-lg font-semibold text-gray-200 mb-4">Image Preview</h3>
+                    <div class="bg-gray-800 p-4 rounded-lg flex-1 overflow-hidden flex items-center justify-center">
+                        <img id="generated-image" src="" alt="Gambar yang dihasilkan akan muncul di sini." class="max-w-full max-h-full object-contain rounded-lg shadow-lg hidden">
+                        <div id="loading-container" class="text-gray-400 text-center flex flex-col items-center">
+                            <div class="loading-spinner mb-4 hidden"></div>
+                            <span id="loading-text">Generated Prompt Builder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="message-box" class="message-box px-6 py-3 bg-green-500 text-white rounded-lg shadow-xl"></div>
+
+    <script>
+        // The main data structure containing all prompt details and customization options
+        const characterOptions = {
+            'Kitten': {
+                base: {
+                    prompt: `A cheerful, British Shorthair cartoon kitten, with large, sparkling teal eyes and a mix of orange tabby and white fluffy fur`,
+                    renderingStyle: `The fur is rendered with soft, blended strokes, showing individual hairs and gradients of color, giving it depth. The eyes have a bright, reflective quality, with subtle highlights that enhance their sparkle, The overall style is a highly detailed digital illustration, with smooth rendering that achieves an almost photographic quality, without outlines`,
+                    lighting: `The lighting is soft and studio-like, illuminating the kitten evenly from the front and slightly above, creating gentle shadows beneath its chin and paws`,
+                },
+                expressions: {
+                    'Happy': `Eyes wide and sparkling, mouth curved into a gentle smile with slightly open lips showing a hint of teeth, ears relaxed slightly to the sides`,
+                    'Sad': `Eyes slightly drooped with glossy tear reflections, mouth closed in a small frown, ears angled slightly back`,
+                    'Angry': `Eyes narrowed with sharp pupils, mouth slightly open showing small fangs, ears tilted back, fur slightly puffed around cheeks`,
+                    'Confused': `One eyebrow slightly raised, eyes looking slightly sideways, mouth slightly open with an uneven curve, ears tilted in opposite directions`,
+                    'Laughing': `Eyes half-closed with upward curves, mouth wide open in a joyful laugh showing tiny kiiten teeth and small tongue, whiskers lifted`,
+                    'Shocked': `Eyes wide and shimmering, mouth agape with visible small teeth, ears upright and alert`,
+                    'Surpised': `eyes wide open with round pupils, mouth forming a small 'O' shape, ears perked high`,
+                },
+                angles: {
+                    'Full Body': `Full body`,
+                    'Close-up': `A highly detailed close-up headshot`,
+                    'Side View': `Profile highly detailed sideshot from the side`,
+                },
+                costumes: {
+                    'Superhero': { description: `Wearing a superhero costume consisting of a tight blue navy bodysuit with a bright yellow-gold belt at the waist, yellow-gold cuffs on the sleeves, and a matching yellow-gold cape flowing behind. On the chest, a yellow diamond-shaped emblem fill white with a yellow paw icon in the center. Around the neck, a yellow-gold tied knot connecting the cape. The costume has smooth color gradients, detailed shading, and a polished, slightly light glossy finish`, colors: ['Blue', 'Yellow', 'Gold'] },
+                    'Other': { description: ``, colors: [] }
+                },
+                moodVibes: {
+                    'Cheerful': `cheerful and friendly`,
+                    'Playful': `playful and energetic`,
+                    'Calm': `calm and serene`,
+                    'Cute': `cute and adorable.`,
+                    'Curious': `curious and alert.`,
+                    'Sleepy': `sleepy and relaxed.`,
+                },
+                dimensions: {
+                    'Square': `800x800 pixels`,
+                    'Portrait': `800x1200 pixels`,
+                    'Landscape': `1200x800 pixels`,
+                }
+            },
+            'Puppy': {
+                base: {
+                    prompt: `A cute, fluffy, black and white puppy, with large, expressive, innocent yellow eyes and a small black nose. The puppy has soft, slightly tousled fur, with black patches on its ears, around its eyes, and on its back, contrasted by a white blaze down its forehead, a white muzzle, chest, and paws`,
+                    renderingStyle: `The fur is rendered with soft, blended strokes, showing individual hairs and gradients of color, giving it depth. The eyes have a bright, reflective quality, with subtle highlights that enhance their sparkle, The overall style is a highly detailed digital illustration, with smooth rendering that achieves an almost photographic quality, without outlines`,
+                    lighting: `The lighting is soft and studio-like, illuminating the puppy evenly from the front and slightly above, creating gentle shadows beneath its chin and paws`,
+                },
+                expressions: {
+                    'Happy': `eyes wide and sparkling, mouth curved into a gentle smile with slightly open lips showing a hint of teeth, ears relaxed slightly to the sides.`,
+                    'Sad': `eyes slightly drooped, mouth closed in a small frown, ears angled slightly back.`,
+                    'Angry': `eyes narrowed with sharp pupils, mouth slightly open showing small fangs, ears tilted back, fur slightly puffed around cheeks.`,
+                    'Confused': `one eyebrow slightly raised, eyes looking slightly sideways, mouth slightly open with an uneven curve, ears tilted in opposite directions.`,
+                    'Laughing': `eyes half-closed with upward curves, mouth wide open in a joyful laugh showing tiny puppy teeth and small tongue, whiskers lifted.`,
+                    'Surprised': `eyes wide open with round pupils, mouth forming a small 'O' shape, ears perked high.`,
+                },
+                angles: {
+                    'Full Body': `Full body`,
+                    'Close-up': `A highly detailed close-up headshot of half-body fluffy`,
+                    'Profile': `Profile highly detailed sideshot from the side`,
+                },
+                costumes: {
+                    'Doctor': { description: `Wearing white vet coat doctor costume and stethoscope, and with paws symbol embroidered on the chest`, colors: ['White', 'Light Blue', 'Orange'] },
+                    'Other': { description: ``, colors: [] }
+                },
+                moodVibes: {
+                    'Cheerful': `cheerful and friendly`,
+                    'Playful': `playful and energetic`,
+                    'Calm': `calm and serene`,
+                    'Cute': `cute and adorable.`,
+                    'Curious': `curious and alert.`,
+                    'Sleepy': `sleepy and relaxed.`,
+                },
+                dimensions: {
+                    'Square': `800x800 pixels`,
+                    'Portrait': `800x1200 pixels`,
+                    'Landscape': `1200x800 pixels`,
+                }
+            }
+        };
+
+        // Get DOM element references
+        const characterDropdown = document.getElementById('character-dropdown');
+        const expressionDropdown = document.getElementById('expression-dropdown');
+        const poseInput = document.getElementById('pose-input');
+        const costumeStyleDropdown = document.getElementById('costume-style-dropdown');
+        const manualCostumeSection = document.getElementById('manual-costume-section');
+        const manualCostumeInput = document.getElementById('manual-costume-input');
+        const costumeColorSection = document.getElementById('costume-color-section');
+        const costumeColorDropdown = document.getElementById('costume-color-dropdown');
+        const angleDropdown = document.getElementById('angle-dropdown');
+        const renderingStyleDropdown = document.getElementById('rendering-style-dropdown');
+        const lightingDropdown = document.getElementById('lighting-dropdown');
+        const backgroundInput = document.getElementById('background-input');
+        const backgroundElementInput = document.getElementById('background-element-input');
+        const moodVibesDropdown = document.getElementById('mood-vibes-dropdown');
+        const dimensionDropdown = document.getElementById('dimension-dropdown');
+        const twoCharactersCheckbox = document.getElementById('two-characters-checkbox');
+        const secondCharacterSection = document.getElementById('second-character-section');
+        const secondCharacterInput = document.getElementById('second-character-input');
+        const promptText = document.getElementById('prompt-text');
+        const generateAiButton = document.getElementById('generate-ai-button');
+        const generatedImage = document.getElementById('generated-image');
+        const loadingContainer = document.getElementById('loading-container');
+        const loadingSpinner = loadingContainer.querySelector('.loading-spinner');
+        const loadingText = document.getElementById('loading-text');
+        const copyButton = document.getElementById('copy-button');
+        const messageBox = document.getElementById('message-box');
+
+        // Function to show a temporary message
+        function showMessage(text, isError = false) {
+            messageBox.textContent = text;
+            messageBox.className = `message-box px-6 py-3 rounded-lg shadow-xl show ${isError ? 'bg-red-500' : 'bg-green-500'}`;
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // Function to update a specific dropdown with options from a data object
+        function updateDropdown(dropdownElement, options) {
+            dropdownElement.innerHTML = '';
+            Object.keys(options).forEach(key => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = key;
+                dropdownElement.appendChild(option);
+            });
+        }
+        
+        // Function to update the costume color dropdown
+        function updateCostumeColorDropdown(currentCharacter, selectedStyle) {
+            costumeColorDropdown.innerHTML = '';
+            const costume = currentCharacter.costumes[selectedStyle];
+            
+            if (!costume || costume.colors.length === 0) {
+                const option = document.createElement('option');
+                option.value = 'none';
+                option.textContent = 'Tidak Ada';
+                costumeColorDropdown.appendChild(option);
+            } else {
+                costume.colors.forEach(color => {
+                    const option = document.createElement('option');
+                    option.value = color;
+                    option.textContent = color;
+                    costumeColorDropdown.appendChild(option);
+                });
+            }
+        }
+
+        // Function to handle costume style selection and show/hide manual input
+        function handleCostumeSelection() {
+            const selectedCharacter = characterDropdown.value;
+            const selectedStyle = costumeStyleDropdown.value;
+
+            if (selectedCharacter === 'Kitten' && selectedStyle === 'Other') {
+                manualCostumeSection.classList.remove('hidden');
+                costumeColorSection.classList.add('hidden');
+            } else {
+                manualCostumeSection.classList.add('hidden');
+                costumeColorSection.classList.remove('hidden');
+                updateCostumeColorDropdown(characterOptions[selectedCharacter], selectedStyle);
+            }
+            updatePromptPreview();
+        }
+
+        // Function to generate the full prompt string
+        function getFinalPrompt() {
+            const selectedCharacter = characterDropdown.value;
+            const currentCharacter = characterOptions[selectedCharacter];
+
+            if (!currentCharacter) return 'Character Not Found';
+
+            const expressionText = currentCharacter.expressions[expressionDropdown.value] || '';
+            const poseText = poseInput.value.trim() !== '' ? poseInput.value.trim() : '';
+            const angleText = currentCharacter.angles[angleDropdown.value] || '';
+            const renderingStyleText = renderingStyleDropdown.value !== 'Digital Illustration' ? renderingStyleDropdown.value : currentCharacter.base.renderingStyle;
+            const lightingText = lightingDropdown.value !== 'Soft Rendering Photographic' ? lightingDropdown.value : currentCharacter.base.lighting;
+            const backgroundText = backgroundInput.value.trim() !== '' ? backgroundInput.value.trim() : '';
+            const backgroundElementText = backgroundElementInput.value.trim() !== '' ? backgroundElementInput.value.trim() : '';
+            const moodVibesText = currentCharacter.moodVibes[moodVibesDropdown.value] || '';
+            const secondCharacterDesc = twoCharactersCheckbox.checked ? secondCharacterInput.value.trim() : '';
+
+            let costumeText = '';
+            const selectedCostumeStyle = costumeStyleDropdown.value;
+            if (selectedCostumeStyle === 'Other' && selectedCharacter === 'Kitten') {
+                costumeText = manualCostumeInput.value.trim();
+            } else {
+                const costume = currentCharacter.costumes[selectedCostumeStyle] || { description: '' };
+                costumeText = costume.description;
+                if (costumeColorDropdown.value !== 'None' && costume.colors.length > 0) {
+                    costumeText += ` in ${costumeColorDropdown.value.toLowerCase()}.`;
+                }
+            }
+
+            const promptParts = [
+                currentCharacter.base.prompt,
+                expressionText,
+                costumeText,
+                angleText,
+                poseText,
+                moodVibesText,
+                secondCharacterDesc,
+                renderingStyleText,
+                lightingText,
+                backgroundText,
+                backgroundElementText
+            ];
+            
+            // Filter out empty parts and join with commas. Add a period at the end.
+            const finalPrompt = promptParts.filter(part => part.trim() !== '').join(', ') + '.';
+            
+            return finalPrompt;
+        }
+
+        // Function to update the prompt preview display
+        function updatePromptPreview() {
+            promptText.textContent = getFinalPrompt();
+        }
+
+        // Function to toggle the visibility of the second character input
+        function toggleSecondCharacterSection() {
+            if (twoCharactersCheckbox.checked) {
+                secondCharacterSection.classList.remove('hidden');
+            } else {
+                secondCharacterSection.classList.add('hidden');
+            }
+            updatePromptPreview();
+        }
+        
+        // Function to update costume style dropdown based on character
+        function updateCostumeStyleDropdownBasedOnCharacter(selectedCharacter) {
+            const costumeStyles = Object.keys(characterOptions[selectedCharacter].costumes);
+            costumeStyleDropdown.innerHTML = '';
+            costumeStyles.forEach(key => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = key === 'None' ? 'Tidak Ada' : key === 'Other' ? 'Lainnya' : key;
+                costumeStyleDropdown.appendChild(option);
+            });
+            handleCostumeSelection();
+        }
+
+        // Main function to update all dropdowns and the prompt preview
+        function updateAll() {
+            const selectedCharacter = characterDropdown.value;
+            const currentCharacter = characterOptions[selectedCharacter];
+
+            updateDropdown(expressionDropdown, currentCharacter.expressions);
+            updateCostumeStyleDropdownBasedOnCharacter(selectedCharacter);
+            updateDropdown(angleDropdown, currentCharacter.angles);
+            updateDropdown(renderingStyleDropdown, { 'Digital Illustration': currentCharacter.base.renderingStyle });
+            updateDropdown(lightingDropdown, { 'Soft Rendering Photographic': currentCharacter.base.lighting });
+            updateDropdown(moodVibesDropdown, currentCharacter.moodVibes);
+            updateDropdown(dimensionDropdown, currentCharacter.dimensions);
+            
+            updatePromptPreview();
+        }
+        
+        // Use exponential backoff for retries
+        const MAX_RETRIES = 3;
+        const RETRY_DELAY = 1000; // 1 second
+
+        async function fetchWithBackoff(url, options, retries = 0) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    const error = await response.json();
+                    if (response.status === 429 && retries < MAX_RETRIES) {
+                        const delay = RETRY_DELAY * Math.pow(2, retries);
+                        console.log(`Too many requests. Retrying in ${delay / 1000}s...`);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return fetchWithBackoff(url, options, retries + 1);
+                    }
+                    throw new Error(error.error.message || `HTTP error! status: ${response.status}`);
+                }
+                return response;
+            } catch (error) {
+                console.error("Fetch failed with error:", error);
+                throw error;
+            }
+        }
+
+
+        // Function to handle the image generation API call
+        async function generateImage() {
+            const userPrompt = getFinalPrompt();
+            
+            if (!userPrompt) {
+                showMessage('Prompt tidak dapat dihasilkan.', true);
+                return;
+            }
+
+            // Show loading state
+            generatedImage.classList.add('hidden');
+            loadingContainer.classList.remove('hidden');
+            loadingSpinner.classList.remove('hidden');
+            loadingText.textContent = 'Creating Image...';
+
+            const payload = {
+                contents: [{
+                    parts: [{ text: userPrompt }]
+                }],
+                generationConfig: {
+                    responseModalities: ['TEXT', 'IMAGE']
+                },
+            };
+
+            try {
+                const response = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const result = await response.json();
+                const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+
+                if (!base64Data) {
+                    throw new Error("Respons API tidak valid atau tidak ada gambar yang dihasilkan.");
+                }
+
+                const imageUrl = `data:image/png;base64,${base64Data}`;
+                generatedImage.src = imageUrl;
+                generatedImage.alt = userPrompt;
+                generatedImage.classList.remove('hidden');
+                loadingContainer.classList.add('hidden');
+                showMessage('Generated Success!');
+            } catch (error) {
+                console.error('API Error:', error);
+                loadingText.textContent = 'Something Went Wrong: ' + error.message;
+                loadingSpinner.classList.add('hidden');
+                showMessage('Failed to connect API.', true);
+            }
+        }
+
+        // Event listeners
+        characterDropdown.addEventListener('change', updateAll);
+        expressionDropdown.addEventListener('change', updatePromptPreview);
+        poseInput.addEventListener('input', updatePromptPreview);
+        costumeStyleDropdown.addEventListener('change', handleCostumeSelection);
+        manualCostumeInput.addEventListener('input', updatePromptPreview);
+        costumeColorDropdown.addEventListener('change', updatePromptPreview);
+        angleDropdown.addEventListener('change', updatePromptPreview);
+        renderingStyleDropdown.addEventListener('change', updatePromptPreview);
+        lightingDropdown.addEventListener('change', updatePromptPreview);
+        backgroundInput.addEventListener('input', updatePromptPreview);
+        backgroundElementInput.addEventListener('input', updatePromptPreview);
+        moodVibesDropdown.addEventListener('change', updatePromptPreview);
+        dimensionDropdown.addEventListener('change', updatePromptPreview);
+        twoCharactersCheckbox.addEventListener('change', toggleSecondCharacterSection);
+        secondCharacterInput.addEventListener('input', updatePromptPreview);
+        generateAiButton.addEventListener('click', generateImage);
+
+        // Copy prompt to clipboard
+        copyButton.addEventListener('click', () => {
+            const promptToCopy = getFinalPrompt();
+            
+            if (promptToCopy.trim() === '') {
+                showMessage('Prompt copy failed.', true);
+                return;
+            }
+
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = promptToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showMessage('Prompt copied to clipboard!');
+                } else {
+                    showMessage('Failed to copy prompt.', true);
+                }
+            } catch (err) {
+                showMessage('Failed to copy prompt.', true);
+            }
+            document.body.removeChild(textarea);
+        });
+
+        // Initial setup on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateAll();
+        });
+    </script>
+</body>
+</html>

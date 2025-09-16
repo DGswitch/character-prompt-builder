@@ -1,0 +1,437 @@
+{
+    "resting": [
+      {
+        "background": "Blurred living room sofa",
+        "background_element": "A soft blanket spread across a wide couch",
+        "vibes": "cozy and warm",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred bedroom window",
+        "background_element": "A sunlit curtain flowing gently beside a small cushion",
+        "vibes": "peaceful and bright",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred wooden porch",
+        "background_element": "A rocking chair resting near a flower pot under sunlight",
+        "vibes": "quiet and calm",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred countryside barn",
+        "background_element": "A haystack piled neatly beside a wooden crate",
+        "vibes": "rustic and serene",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred shaded garden",
+        "background_element": "A hammock tied gently between two leafy trees",
+        "vibes": "relaxed and airy",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred cozy library",
+        "background_element": "A stack of books resting on a soft armchair",
+        "vibes": "calm and thoughtful",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred warm fireplace",
+        "background_element": "A glowing firewood with a cushion placed on the carpet",
+        "vibes": "warm and gentle",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred attic corner",
+        "background_element": "A pile of old pillows stacked beside a wooden chest",
+        "vibes": "quiet and nostalgic",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred sunny balcony",
+        "background_element": "A wicker chair covered with a soft throw blanket",
+        "vibes": "airy and cozy",
+        "category": "resting"
+      },
+      {
+        "background": "Blurred mountain lodge",
+        "background_element": "A fur rug stretched beside a wooden wall",
+        "vibes": "calming and rustic",
+        "category": "resting"
+      }
+    ],
+    "accessories": [
+      {
+        "background": "Blurred boutique shop",
+        "background_element": "A small glass shelf with colorful ribbons stacked neatly",
+        "vibes": "fancy and playful",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred dressing table",
+        "background_element": "A mirror reflecting a shiny collar lying on the surface",
+        "vibes": "stylish and elegant",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred pet shop aisle",
+        "background_element": "A wooden rack displaying rows of tiny hats",
+        "vibes": "fun and cheerful",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred sewing studio",
+        "background_element": "A mannequin covered with a tiny cape under soft light",
+        "vibes": "creative and charming",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred fashion display",
+        "background_element": "A glass case showcasing a bowtie resting on velvet",
+        "vibes": "sophisticated and clean",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred cozy craft room",
+        "background_element": "A sewing basket filled with buttons and threads",
+        "vibes": "warm and handmade",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred vintage shop",
+        "background_element": "A wooden table with leather collars laid flat",
+        "vibes": "classic and rustic",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred pet boutique window",
+        "background_element": "A display cushion showing off a shiny pendant",
+        "vibes": "luxurious and soft",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred modern studio",
+        "background_element": "A spotlight shining on a small superhero cape",
+        "vibes": "dramatic and stylish",
+        "category": "accessories"
+      },
+      {
+        "background": "Blurred fashion workshop",
+        "background_element": "A wooden desk holding fabric rolls and scissors",
+        "vibes": "creative and energetic",
+        "category": "accessories"
+      }
+    ],
+    "medical_care": [
+      {
+        "background": "Blurred veterinary clinic",
+        "background_element": "A white counter with stethoscope resting beside medicine bottles",
+        "vibes": "professional and caring",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred hospital ward",
+        "background_element": "A clean bed with a clipboard hanging at the side",
+        "vibes": "clinical and calm",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred emergency room",
+        "background_element": "A stainless tray with bandages neatly rolled",
+        "vibes": "urgent and serious",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred pharmacy",
+        "background_element": "A shelf filled with colorful pill bottles under bright light",
+        "vibes": "organized and precise",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred exam room",
+        "background_element": "A desk with a thermometer placed next to latex gloves",
+        "vibes": "careful and attentive",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred waiting room",
+        "background_element": "A stack of magazines beside a first aid kit",
+        "vibes": "gentle and patient",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred surgical prep area",
+        "background_element": "A sterile table with surgical scissors placed neatly",
+        "vibes": "clean and professional",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred modern hospital",
+        "background_element": "A bright corridor with medical charts hanging on the wall",
+        "vibes": "clinical and efficient",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred vet surgery room",
+        "background_element": "A bright lamp hanging over a covered operating table",
+        "vibes": "serious and focused",
+        "category": "medical_care"
+      },
+      {
+        "background": "Blurred clinic counter",
+        "background_element": "A bottle of disinfectant placed beside cotton pads",
+        "vibes": "sterile and safe",
+        "category": "medical_care"
+      }
+    ],
+    "superhero": [
+      {
+        "background": "Blurred night city skyline",
+        "background_element": "A tall rooftop with neon lights glowing behind skyscrapers",
+        "vibes": "heroic and dramatic",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred stormy sky",
+        "background_element": "A dark cloud swirling above a glowing lightning strike",
+        "vibes": "powerful and intense",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred urban rooftop",
+        "background_element": "A spotlight shining on a waving cape near the ledge",
+        "vibes": "epic and bold",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred futuristic city",
+        "background_element": "A glass tower with neon reflections under the moonlight",
+        "vibes": "modern and fearless",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred dark alley",
+        "background_element": "A glowing emblem projected against the brick wall",
+        "vibes": "mysterious and bold",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred space horizon",
+        "background_element": "A glowing planet surface reflecting under stars",
+        "vibes": "cosmic and grand",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred bridge at night",
+        "background_element": "A shining beam of light cutting through fog",
+        "vibes": "tense and cinematic",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred city street",
+        "background_element": "A broken pavement glowing with sparks of electricity",
+        "vibes": "chaotic and brave",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred hilltop sunset",
+        "background_element": "A golden horizon lighting up a fluttering cape",
+        "vibes": "heroic and hopeful",
+        "category": "superhero"
+      },
+      {
+        "background": "Blurred stormy rooftop",
+        "background_element": "A lightning rod glowing behind a waving flag",
+        "vibes": "epic and stormy",
+        "category": "superhero"
+      }
+    ],
+    "doctor": [
+      {
+        "background": "Blurred clean hospital",
+        "background_element": "A white hallway with shining floors leading to exam rooms",
+        "vibes": "professional and calm",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred medical office",
+        "background_element": "A tidy desk with a stethoscope resting on a clipboard",
+        "vibes": "trustworthy and focused",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred examination room",
+        "background_element": "A patient bed with a chart clipped at the foot",
+        "vibes": "attentive and gentle",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred clinical hallway",
+        "background_element": "Bright white walls with hand sanitizer mounted neatly",
+        "vibes": "sterile and safe",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred hospital entrance",
+        "background_element": "Automatic glass doors opening with medical signage",
+        "vibes": "welcoming and formal",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred nurse station",
+        "background_element": "A counter stacked with files and a ringing phone",
+        "vibes": "busy and attentive",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred medical lab",
+        "background_element": "A table holding diagnostic machines with blinking lights",
+        "vibes": "serious and precise",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred hospital ward",
+        "background_element": "A row of clean beds lined with curtains",
+        "vibes": "organized and neat",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred x ray room",
+        "background_element": "A glowing screen showing faint images of bones",
+        "vibes": "technical and focused",
+        "category": "doctor"
+      },
+      {
+        "background": "Blurred hospital cafeteria",
+        "background_element": "Tables arranged neatly with a medical poster nearby",
+        "vibes": "casual and professional",
+        "category": "doctor"
+      }
+    ],
+    "scientist": [
+      {
+        "background": "Blurred laboratory",
+        "background_element": "A counter holding glass flasks filled with colorful liquids",
+        "vibes": "curious and inventive",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred research facility",
+        "background_element": "A glowing microscope resting beside chemical charts",
+        "vibes": "serious and experimental",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred futuristic lab",
+        "background_element": "A large holographic screen glowing with blue data",
+        "vibes": "modern and innovative",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred chemical room",
+        "background_element": "A shelf filled with labeled glass jars under neon light",
+        "vibes": "technical and curious",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred genetics lab",
+        "background_element": "A DNA model standing beside a microscope",
+        "vibes": "focused and intelligent",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred experiment station",
+        "background_element": "A notebook scribbled with formulas lying near beakers",
+        "vibes": "analytical and creative",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred clean laboratory",
+        "background_element": "A centrifuge spinning samples on a side counter",
+        "vibes": "technical and clinical",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred robotics lab",
+        "background_element": "A metal table holding circuits and wires neatly",
+        "vibes": "futuristic and inventive",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred innovation hub",
+        "background_element": "A glowing tablet screen showing 3D molecule render",
+        "vibes": "creative and modern",
+        "category": "scientist"
+      },
+      {
+        "background": "Blurred research library",
+        "background_element": "A desk covered with reference books and chemical diagrams",
+        "vibes": "intellectual and thoughtful",
+        "category": "scientist"
+      }
+    ],
+    "interaction": [
+      {
+        "background": "Blurred sunny park",
+        "background_element": "A grassy field with a picnic blanket spread wide",
+        "vibes": "joyful and open",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred backyard patio",
+        "background_element": "A wooden deck with a ball resting near flower pots",
+        "vibes": "casual and lively",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred living room rug",
+        "background_element": "A soft carpet with a colorful toy ball in the middle",
+        "vibes": "warm and homely",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred open meadow",
+        "background_element": "A wide grassy patch with wildflowers swaying",
+        "vibes": "cheerful and bright",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred playground",
+        "background_element": "A slide casting shadows beside a sandpit",
+        "vibes": "playful and fun",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred family room",
+        "background_element": "A coffee table stacked with board games beside a sofa",
+        "vibes": "friendly and lively",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred garden path",
+        "background_element": "A stone walkway lined with blooming flowers",
+        "vibes": "bright and gentle",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred lakeside",
+        "background_element": "A wooden pier stretching over still water",
+        "vibes": "peaceful and soft",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred rooftop terrace",
+        "background_element": "A small chair facing city lights under night sky",
+        "vibes": "casual and calm",
+        "category": "interaction"
+      },
+      {
+        "background": "Blurred countryside yard",
+        "background_element": "A fence corner with a wooden stool under sunlight",
+        "vibes": "simple and natural",
+        "category": "interaction"
+      }
+    ]
+  }
+  
